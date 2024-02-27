@@ -1,0 +1,56 @@
+//main code
+
+module mux(input wire sel,input wire a, input wire b, output reg y );
+always @* begin
+        if(sel==0)
+                y=a;
+        else
+                y=b;
+        end
+endmodule
+
+//test bench code
+
+module mux_2;
+reg sel,a,b;
+wire y;
+mux mygate(sel,a,b,y);
+initial
+begin
+$monitor("S = %b A = %b B = %b Y = %b",sel,a,b,y);
+
+        sel = 1'b0;
+        a = 1'b0;
+        b = 1'b0;
+        #10
+        sel = 1'b0;
+        a = 1'b0;
+        b = 1'b1;
+        #10
+        sel = 1'b0;
+        a = 1'b1;
+        b = 1'b0;
+        #10
+        sel = 1'b0;
+        a = 1'b1;
+        b = 1'b1;
+        #10
+        sel = 1'b1;
+        a = 1'b0;
+        b = 1'b0;
+        #10
+        sel = 1'b1;
+        a = 1'b0;
+        b = 1'b1;
+        #10
+        sel = 1'b1;
+        a = 1'b1;
+        b = 1'b0;
+        #10
+        sel = 1'b1;
+        a = 1'b1;
+        b = 1'b1;
+
+end
+endmodule
+
