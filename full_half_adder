@@ -1,0 +1,56 @@
+//main code
+
+module full__adder(input a, input b,input c , output s, output carry);
+wire s1,c1,c2;
+halfadder HA1(a,b,s1,c1);
+halfadder HA2(s1,c,s,c2);
+assign carry= c1 | c2;
+initial
+begin
+$display("This is a data level modelling that implements fulladder using halfadder");
+end
+endmodule
+
+//test bench code
+
+module full__adder_tb;
+        reg t_a, t_b,t_c;
+    wire sum,carry;
+
+    full__adder mygate(t_a,t_b,t_c,sum,carry);
+        initial
+        begin
+        $monitor("A = %b B = %b C = %b sum = %b carry = %b", t_a, t_b,t_c, sum, carry);
+        t_a = 1'b0;
+        t_b = 1'b0;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b0;
+        t_b = 1'b0;
+        t_c = 1'b1;
+        #10
+        t_a = 1'b0;
+        t_b = 1'b1;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b0;
+        t_b = 1'b1;
+        t_c = 1'b1;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b0;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b0;
+        t_c = 1'b1;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b1;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b1;
+        t_c = 1'b1;
+    end
+endmodule
