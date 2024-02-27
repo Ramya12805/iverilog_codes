@@ -1,0 +1,35 @@
+//main code
+
+module halfadder(input a , input b, output s,output c);
+assign s= a^b;
+assign c= a&b;
+initial
+begin
+$display("This is a Data level modelling");
+end
+endmodule
+
+// test bench code
+
+module half_adder;
+reg t_a,t_b;
+wire s,c;
+halfadder mygate(t_a,t_b,s,c);
+initial
+begin
+$monitor("A = %b B = %b S = %b C = %b",t_a,t_b,s,c);
+
+t_a=1'b0;
+t_b=1'b0;
+#5
+t_a=1'b0;
+t_b=1'b1;
+#5
+t_a=1'b1;
+t_b=1'b0;
+#5
+t_a=1'b1;
+t_b=1'b1;
+
+end
+endmodule
