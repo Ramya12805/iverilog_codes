@@ -1,0 +1,57 @@
+//main code
+
+module mux(input s,input a, input b,output y);
+wire w1,w2;
+assign w1= ~s & a;
+assign w2=s & b;
+assign y = w1 | w2;
+initial
+begin
+$display("This is a mux gate level modelling");
+end
+endmodule
+
+// test bench code
+
+module mux_2;
+reg t_s,t_a,t_b;
+wire y;
+mux mygate(t_s,t_a,t_b,y);
+initial
+begin
+$monitor("S = %b A = %b B = %b Y = %b",t_s,t_a,t_b,y);
+
+        t_s = 1'b0;
+        t_a = 1'b0;
+        t_b = 1'b0;
+        #10
+        t_s = 1'b0;
+        t_a = 1'b0;
+        t_b = 1'b1;
+        #10
+        t_s = 1'b0;
+        t_a = 1'b1;
+        t_b = 1'b0;
+        #10
+        t_s = 1'b0;
+        t_a = 1'b1;
+        t_b = 1'b1;
+        #10
+        t_s = 1'b1;
+        t_a = 1'b0;
+        t_b = 1'b0;
+        #10
+        t_s = 1'b1;
+        t_a = 1'b0;
+        t_b = 1'b1;
+        #10
+        t_s = 1'b1;
+        t_a = 1'b1;
+        t_b = 1'b0;
+        #10
+        t_s = 1'b1;
+        t_a = 1'b1;
+        t_b = 1'b1;
+
+end
+endmodule
