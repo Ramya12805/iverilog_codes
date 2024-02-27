@@ -1,0 +1,56 @@
+//main code
+
+module  eg_2(X,Y,Z,W);
+input X,Y,Z;
+output W;
+wire w1,w2,w3,w4;
+or G1(w1,X,Y);
+xor G2(w2,Y,Z);
+not G3(w3,X);
+or G4(w4,w2,w3);
+xor(W,w4,w1);
+endmodule
+
+//test bench code
+
+module tb_eg2;
+reg X,Y,Z;
+wire W;
+eg_2 mycircuits(X,Y,Z,W);
+initial
+begin
+$monitor("X = %b Y = %b Z = %b W = %b", X,Y,Z,W);
+X=1'b0;
+Y=1'b0;
+Z=1'b0;
+#5
+X=1'b0;
+Y=1'b0;
+Z=1'b1;
+#5
+X=1'b0;
+Y=1'b1;
+Z=1'b0;
+#5
+X=1'b0;
+Y=1'b1;
+Z=1'b1;
+#5
+X=1'b1;
+Y=1'b0;
+Z=1'b0;
+#5
+X=1'b1;
+Y=1'b0;
+Z=1'b1;
+#5
+X=1'b1;
+Y=1'b1;
+Z=1'b0;
+#5
+X=1'b1;
+Y=1'b1;
+Z=1'b1;
+
+end
+endmodule
