@@ -1,0 +1,59 @@
+// main code
+
+module fulladder(input a, input b,input c, output sum,output carry);
+wire w1,w2,w3;
+assign sum=a^b^c;
+and g1(w1,a,b);
+and g2(w2,b,c);
+and g3(w3,a,c);
+assign carry= w1 | w2 | w3;
+initial
+begin
+$display("This is a fulladder data level modelling");
+end
+endmodule
+
+//test bench code
+
+module full_adder;
+        reg t_a, t_b,t_c;
+    wire sum,carry;
+
+    fulladder gate(t_a,t_b,t_c,sum,carry);
+        initial
+        begin
+        $monitor("A = %b B = %b C = %b sum = %b carry = %b", t_a, t_b,t_c, sum, carry);
+        t_a = 1'b0;
+        t_b = 1'b0;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b0;
+        t_b = 1'b1;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b0;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b1;
+        t_c = 1'b0;
+        #10
+        t_a = 1'b0;
+        t_b = 1'b0;
+        t_c = 1'b1;
+        #10
+        t_a = 1'b0;
+        t_b = 1'b1;
+        t_c = 1'b1;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b0;
+        t_c = 1'b1;
+        #10
+        t_a = 1'b1;
+        t_b = 1'b1;
+        t_c = 1'b1;
+    end
+endmodule
+
