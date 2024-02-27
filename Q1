@@ -1,0 +1,54 @@
+//main code
+
+module  eg_1(A,B,C,Y);
+input A,B,C;
+output Y;
+wire w1,w2;
+nand G1(w1,A,B);
+not G2(w2,C);
+or G3(Y,w1,w2);
+endmodule
+
+//test bench code
+
+module tb_eg1;
+reg A,B,C;
+wire Y;
+eg_1 mycircuits(A,B,C,Y);
+initial
+begin
+$monitor("A = %b B = %b C = %b Y = %b", A,B,C,Y);
+A=1'b0;
+B=1'b0;
+C=1'b0;
+#5
+A=1'b0;
+B=1'b0;
+C=1'b1;
+#5
+A=1'b0;
+B=1'b1;
+C=1'b0;
+#5
+A=1'b0;
+B=1'b1;
+C=1'b1;
+#5
+A=1'b1;
+B=1'b0;
+C=1'b0;
+#5
+A=1'b1;
+B=1'b0;
+C=1'b1;
+#5
+A=1'b1;
+B=1'b1;
+C=1'b0;
+#5
+A=1'b1;
+B=1'b1;
+C=1'b1;
+
+end
+endmodule
