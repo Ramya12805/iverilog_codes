@@ -1,0 +1,56 @@
+//main code
+
+module andgate(a,b,c,y);
+input a,b,c;
+output y;
+and(y,a,b,c);
+initial
+begin
+$display("This is AND Gate Three input level Modelling");
+end
+endmodule
+
+//test bench code
+
+module andgate_tb;
+reg t_a,t_b,t_c;
+wire t_y;
+
+andgate my_gate(t_a,t_b,t_c,t_y);
+initial
+begin
+$monitor("A = %b B = %b C = %b Y=%b", t_a,t_b,t_c,t_y);
+t_a=1'b0;
+t_b=1'b0;
+t_c=1'b0;
+#10
+t_a=1'b0;
+t_b=1'b0;
+t_c=1'b1;
+#10
+t_a=1'b0;
+t_b=1'b1;
+t_c=1'b0;
+#10
+t_a=1'b0;
+t_b=1'b1;
+t_c=1'b1;
+#10
+t_a=1'b1;
+t_b=1'b0;
+t_c=1'b0;
+#10
+t_a=1'b1;
+t_b=1'b0;
+t_c=1'b1;
+#10
+t_a=1'b1;
+t_b=1'b1;
+t_c=1'b0;
+#10
+t_a=1'b1;
+t_b=1'b1;
+t_c=1'b1;
+end
+endmodule
+
