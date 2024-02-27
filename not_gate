@@ -1,0 +1,28 @@
+// not gate main code 
+
+module notgate(a,y);
+input a;
+output y;
+not(y,a);
+initial
+begin
+$display("This is NOT - Gatelevel Modelling");
+end
+endmodule
+
+// not gate test bench code
+
+module notgate_tb;
+reg t_a;
+wire t_y;
+
+notgate my_gate(t_a,t_y);
+initial
+begin
+$monitor("A = %b Y = %b",t_a,t_y);
+t_a=1'b0;
+#10
+t_a=1'b1;
+
+end
+endmodule
