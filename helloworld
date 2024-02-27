@@ -1,0 +1,9 @@
+#Print Hello World using iverilog
+
+module hello;
+initial
+begin
+$display("Hello world");
+$finish;
+end
+endmodule
